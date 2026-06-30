@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+<div class="container" style="width:700px;margin:120px auto;">
+
+<h2 align="center">
+
+Patient Registration
+
+</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button
+class="btn"
+type="submit">
+
+Register
+
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

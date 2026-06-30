@@ -1,0 +1,1312 @@
+/* =====================================================
+   SMART BODY CHECKUP SYSTEM - style.css
+   Complete, production-ready CSS
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =====================================================
+   1. CSS VARIABLES
+===================================================== */
+
+:root {
+    --primary: #0d6efd;
+    --secondary: #4facfe;
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --dark: #1d3557;
+    --light: #f8f9fa;
+    --white: #ffffff;
+    --gray: #6c757d;
+    --bg: #f5f9ff;
+
+    --glass: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.25);
+
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.18);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-pill: 50px;
+
+    --transition: 0.3s ease;
+}
+
+/* =====================================================
+   2. RESET & BASE
+===================================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =====================================================
+   3. LAYOUT HELPERS
+===================================================== */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+.text-center { text-align: center; }
+.mt-4 { margin-top: 24px; }
+
+/* =====================================================
+   4. BUTTON SYSTEM
+===================================================== */
+
+.btn,
+button.btn {
+    display: inline-block;
+    padding: 13px 30px;
+    border-radius: var(--radius-pill);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    box-shadow: var(--shadow);
+    line-height: 1.4;
+}
+
+.btn:hover,
+button.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    color: #fff;
+}
+
+.btn-primary {
+    background: #fff;
+    color: var(--primary);
+    padding: 13px 28px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+.btn-secondary {
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: var(--radius-pill);
+    display: inline-block;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+}
+
+/* Disease form buttons */
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #ff6b6b);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: var(--radius-pill);
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-danger:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #56cc68);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: var(--radius-pill);
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-success:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* =====================================================
+   5. NAVBAR
+===================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 8%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-links li a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #444;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 2px;
+}
+
+.nav-links li a:hover {
+    color: var(--primary);
+}
+
+/* =====================================================
+   6. HERO SECTION (HOME PAGE)
+===================================================== */
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0d6efd, #4facfe, #00c6ff);
+    color: #fff;
+    padding-top: 80px;
+}
+
+/* Floating background elements */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    animation: floatCircle 10s infinite alternate ease-in-out;
+}
+
+.circle1 { width: 400px; height: 400px; top: -100px; left: -100px; animation-duration: 9s; }
+.circle2 { width: 250px; height: 250px; top: 50%; right: -80px; animation-duration: 11s; animation-delay: 1s; }
+.circle3 { width: 180px; height: 180px; bottom: 80px; left: 20%; animation-duration: 8s; animation-delay: 2s; }
+.circle4 { width: 120px; height: 120px; top: 30%; left: 40%; animation-duration: 12s; animation-delay: 0.5s; }
+.circle5 { width: 300px; height: 300px; bottom: -80px; right: 15%; animation-duration: 10s; animation-delay: 1.5s; }
+
+.plus {
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.2);
+    animation: floatCircle 7s infinite alternate ease-in-out;
+}
+.plus1 { top: 25%; left: 10%; animation-delay: 0.5s; }
+.plus2 { bottom: 30%; right: 12%; animation-delay: 2s; }
+
+.heartbeat {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.15);
+    animation: pulse 2s infinite;
+}
+
+@keyframes floatCircle {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 40px) scale(1.05); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.15; }
+    50%       { transform: scale(1.2); opacity: 0.3; }
+}
+
+@keyframes floatImg {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-18px); }
+}
+
+.hero-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-left {
+    flex: 1;
+    max-width: 560px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 22px;
+    backdrop-filter: blur(8px);
+}
+
+.hero-left h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.hero-left h1 span {
+    color: #fff176;
+}
+
+.hero-left h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 18px;
+    opacity: 0.9;
+}
+
+.hero-left p {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 28px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-right {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-card {
+    display: inline-block;
+}
+
+.hero-right img,
+.hero-card img {
+    max-width: 420px;
+    width: 100%;
+    animation: floatImg 4s ease-in-out infinite;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+}
+
+/* =====================================================
+   7. PREDICTION HERO (prediction.html hero)
+===================================================== */
+
+.prediction-hero {
+    min-height: 60vh;
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0d6efd, #4facfe);
+    color: #fff;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 28px;
+    line-height: 1.8;
+}
+
+/* Alias: .hero used in prediction page */
+.hero {
+    min-height: 60vh;
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0d6efd, #4facfe);
+    color: #fff;
+}
+
+/* =====================================================
+   8. ABOUT SECTION
+===================================================== */
+
+.about-section {
+    background: var(--white);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.about-box {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    border-top: 4px solid var(--primary);
+}
+
+.about-box:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.about-box i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.about-box h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.about-box p {
+    font-size: 0.92rem;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* =====================================================
+   9. HOME CHECKUP FORM (index.html quick form)
+===================================================== */
+
+.checkup-section {
+    background: var(--bg);
+}
+
+.checkup-form {
+    background: #fff;
+    padding: 44px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.checkup-form .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e5e5e5;
+    border-radius: var(--radius-md);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.93rem;
+    outline: none;
+    transition: var(--transition);
+    resize: vertical;
+}
+
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+}
+
+.btn-submit {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: var(--radius-pill);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.btn-submit:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* =====================================================
+   10. DISEASE SELECTION SECTION
+===================================================== */
+
+.disease-section {
+    background: var(--white);
+}
+
+.disease-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.disease-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 40px 28px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    border-top: 4px solid var(--primary);
+}
+
+.disease-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.disease-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 18px;
+    display: block;
+}
+
+.disease-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.disease-card p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 22px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   11. DISEASE PREDICTION FORMS
+===================================================== */
+
+.form-section {
+    background: var(--bg);
+}
+
+.form-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 44px;
+    box-shadow: var(--shadow);
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.form-card h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-card h2 i {
+    color: var(--primary);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select {
+    padding: 13px 16px;
+    border: 2px solid #e5e5e5;
+    border-radius: var(--radius-sm);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.93rem;
+    color: #333;
+    background: #fff;
+    outline: none;
+    transition: var(--transition);
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.12);
+}
+
+/* =====================================================
+   12. AI RESULT SECTION
+===================================================== */
+
+.result-section {
+    background: #eef6ff;
+    text-align: center;
+}
+
+.result-box {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    border-radius: var(--radius-lg);
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.result-box h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.result-box h3 {
+    font-size: 1rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.result-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.result-note {
+    font-size: 0.88rem;
+    color: var(--gray);
+    margin-top: 14px;
+}
+
+/* result-card variant (prediction page) */
+.result-card {
+    max-width: 640px;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    background: #fff;
+}
+
+.result-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 24px 32px;
+}
+
+.result-header h2 {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-body {
+    padding: 36px 32px;
+    text-align: center;
+}
+
+.prediction-text {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.risk-level {
+    margin-top: 24px;
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.risk-level i {
+    font-size: 2rem;
+}
+
+.risk-level h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.risk-level p {
+    font-size: 0.92rem;
+    opacity: 0.9;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.low-risk  { background: var(--success); color: #fff; }
+.high-risk { background: var(--danger);  color: #fff; }
+
+/* =====================================================
+   13. HISTORY SECTION
+===================================================== */
+
+.history-section {
+    background: var(--white);
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.history-table thead tr {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.history-table th {
+    color: #fff;
+    padding: 16px 20px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.history-table td {
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 1px solid #eef2f9;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.history-table tbody tr:hover {
+    background: #f1f7ff;
+}
+
+/* =====================================================
+   14. RECOMMENDATION SECTION
+===================================================== */
+
+.recommendation-section {
+    background: var(--bg);
+}
+
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+}
+
+.recommendation-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 36px 24px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.recommendation-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.recommendation-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.recommendation-card p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* =====================================================
+   15. STATS SECTION
+===================================================== */
+
+.stats-section {
+    background: var(--white);
+}
+
+.stats-grid,
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 28px;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 36px 24px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    border-bottom: 4px solid var(--primary);
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 14px;
+    display: block;
+}
+
+.stat-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    word-break: break-all;
+}
+
+.stat-card p {
+    font-size: 0.88rem;
+    color: var(--gray);
+}
+
+/* =====================================================
+   16. EMERGENCY SECTION
+===================================================== */
+
+.emergency-section {
+    background: linear-gradient(135deg, #dc3545, #ff6b6b);
+    color: #fff;
+    text-align: center;
+    padding: 70px 0;
+}
+
+.emergency-card {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.emergency-card i {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    display: block;
+    animation: pulse 2s infinite;
+}
+
+.emergency-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.emergency-card p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 28px;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   17. DASHBOARD
+===================================================== */
+
+.dashboard-section,
+.container[style*="margin-top:120px"] {
+    padding-top: 120px;
+    min-height: calc(100vh - 80px);
+}
+
+.dashboard-section h1,
+.container h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.dashboard-section hr,
+.container hr {
+    border: none;
+    border-top: 2px solid #eaeaea;
+    margin: 18px 0 24px;
+}
+
+.dashboard-section h3,
+.container h3 {
+    font-size: 1.15rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+/* =====================================================
+   18. AUTH FORMS (Login / Register)
+===================================================== */
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    padding: 100px 20px 40px;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 50px 44px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 440px;
+}
+
+.auth-card h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Django form.as_p auto-generates <p> wrappers */
+.auth-card p,
+form p {
+    margin-bottom: 16px;
+}
+
+.auth-card label,
+form label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 7px;
+}
+
+/* =====================================================
+   19. DJANGO MESSAGES
+===================================================== */
+
+.messages-container {
+    margin-top: 90px;
+    padding: 0 5%;
+}
+
+.message-alert {
+    padding: 16px 22px;
+    margin-bottom: 14px;
+    border-radius: var(--radius-md);
+    font-size: 0.93rem;
+    line-height: 1.5;
+}
+
+.message-info    { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+.message-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.message-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+.message-error   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* =====================================================
+   20. FOOTER
+===================================================== */
+
+footer {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.footer-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.footer-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer-content p {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    margin-bottom: 6px;
+    line-height: 1.7;
+}
+
+.footer-content > div,
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.footer-content a,
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.footer-content a:hover,
+.social-icons a:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* =====================================================
+   21. GLASS UTILITY
+===================================================== */
+
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+/* =====================================================
+   22. RESPONSIVE — TABLET (≤992px)
+===================================================== */
+
+@media (max-width: 992px) {
+    .hero-wrapper {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .hero-left {
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-right img,
+    .hero-card img {
+        max-width: 340px;
+        margin: 0 auto;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkup-form .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 30px 24px;
+    }
+
+    .checkup-form {
+        padding: 30px 24px;
+    }
+}
+
+/* =====================================================
+   23. RESPONSIVE — MOBILE (≤768px)
+===================================================== */
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 5%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links li a {
+        font-size: 0.85rem;
+    }
+
+    .hero-left h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-left h2 {
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
+
+    .result-box,
+    .result-card {
+        margin: 0 16px;
+        padding: 32px 24px;
+    }
+
+    .prediction-text {
+        font-size: 1.9rem;
+    }
+
+    .auth-card {
+        padding: 36px 26px;
+    }
+
+    .about-grid,
+    .disease-grid,
+    .stats-grid,
+    .stats,
+    .recommendation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn,
+    button.btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* =====================================================
+   24. RESPONSIVE — SMALL MOBILE (≤480px)
+===================================================== */
+
+@media (max-width: 480px) {
+    .hero-left h1 {
+        font-size: 1.8rem;
+    }
+
+    .result-text,
+    .prediction-text {
+        font-size: 1.6rem;
+    }
+
+    .form-card {
+        padding: 24px 16px;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+    }
+
+    .emergency-card h2 {
+        font-size: 1.5rem;
+    }
+}

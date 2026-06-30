@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Smart Body Checkup{% endblock %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+            Navbar
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="/" style="display:flex;align-items:center;text-decoration:none;">
+
+                <img src="{% static 'images/logo.png' %}" alt="Logo">
+
+                <span>Smart Body Checkup</span>
+
+            </a>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+
+            <li>
+                <a href="/prediction/">
+                    <i class="fas fa-heartbeat"></i> Prediction
+                </a>
+            </li>
+
+            {% if user.is_authenticated %}
+
+            <li>
+                <a href="/profile/">
+                    <i class="fas fa-user"></i> Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/logout/">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </li>
+
+            {% else %}
+
+            <li>
+                <a href="/login/">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+            </li>
+
+            <li>
+                <a href="/register/">
+                    <i class="fas fa-user-plus"></i> Register
+                </a>
+            </li>
+
+            {% endif %}
+
+        </ul>
+
+    </nav>
+
+    <!-- =========================
+            Messages
+    ========================== -->
+
+    {% if messages %}
+
+        <div style="margin-top:100px; width:80%; margin-left:auto; margin-right:auto;">
+
+            {% for message in messages %}
+
+                <div style="
+                    padding:15px;
+                    margin-bottom:15px;
+                    border-radius:8px;
+                    background:#d1ecf1;
+                    color:#0c5460;
+                    border:1px solid #bee5eb;
+                ">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+    <!-- =========================
+            Main Content
+    ========================== -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- =========================
+            Footer
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <h2>Smart Body Checkup System</h2>
+
+            <p>
+
+                AI Powered Disease Prediction using
+
+                Machine Learning & Django
+
+            </p>
+
+            <br>
+
+            <div>
+
+                <a href="#" style="color:white;margin:10px;">
+                    <i class="fab fa-facebook fa-lg"></i>
+                </a>
+
+                <a href="#" style="color:white;margin:10px;">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>
+
+                <a href="#" style="color:white;margin:10px;">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+
+                <a href="#" style="color:white;margin:10px;">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+
+            </div>
+
+            <br>
+
+            <p>
+
+                © 2026 Smart Body Checkup System
+
+            </p>
+
+            <p>
+
+                Developed using Django, Python & Machine Learning
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- JavaScript -->
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+Smart Body Checkup | AI Healthcare
+
+{% endblock %}
+
+{% block content %}
+
+<!-- ========================================= -->
+<!-- HERO SECTION -->
+<!-- ========================================= -->
+
+<section class="hero-section">
+
+    <!-- Floating Background -->
+
+    <div class="hero-bg">
+
+        <span class="circle circle1"></span>
+
+        <span class="circle circle2"></span>
+
+        <span class="circle circle3"></span>
+
+        <span class="circle circle4"></span>
+
+        <span class="circle circle5"></span>
+
+        <span class="plus plus1">
+            <i class="fas fa-plus"></i>
+        </span>
+
+        <span class="plus plus2">
+            <i class="fas fa-plus"></i>
+        </span>
+
+        <span class="heartbeat">
+            <i class="fas fa-heartbeat"></i>
+        </span>
+
+    </div>
+
+    <div class="container">
+
+        <div class="hero-wrapper">
+
+            <!-- Left Side -->
+
+            <div class="hero-left">
+
+                <span class="hero-badge">
+
+                    <i class="fas fa-robot"></i>
+
+                    AI Powered Healthcare
+
+                </span>
+
+                <h1>
+
+                    Smart Body
+
+                    <span>Checkup</span>
+
+                </h1>
+
+                <h2>
+
+                    Disease Prediction Using
+
+                    Machine Learning
+
+                </h2>
+
+                <p>
+
+                    Welcome to the Smart Body Checkup System,
+                    an AI-powered healthcare platform designed
+                    to predict diseases early using Machine Learning.
+
+                </p>
+
+                                <div class="hero-buttons">
+
+                    <a href="#checkup" class="btn-primary">
+                        <i class="fas fa-stethoscope"></i>
+                        Start Checkup
+                    </a>
+
+                    <a href="#about" class="btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Right Side -->
+
+            <div class="hero-right">
+
+                <div class="hero-card">
+
+                    <img src="{% static 'images/health.png' %}" alt="Healthcare AI">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ABOUT SECTION -->
+<!-- ========================================= -->
+
+<section class="about-section" id="about">
+
+    <div class="container">
+
+        <h2 class="section-title">🏥 About Smart Body Checkup</h2>
+
+        <div class="about-grid">
+
+            <div class="about-box">
+
+                <i class="fas fa-brain"></i>
+
+                <h3>AI Prediction</h3>
+
+                <p>
+                    Uses Machine Learning algorithms to analyze symptoms and predict diseases accurately.
+                </p>
+
+            </div>
+
+            <div class="about-box">
+
+                <i class="fas fa-database"></i>
+
+                <h3>Data Driven</h3>
+
+                <p>
+                    Trained on large medical datasets for reliable and fast predictions.
+                </p>
+
+            </div>
+
+            <div class="about-box">
+
+                <i class="fas fa-shield-alt"></i>
+
+                <h3>Secure System</h3>
+
+                <p>
+                    Your health data is processed securely and not shared with third parties.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CHECKUP SECTION -->
+<!-- ========================================= -->
+
+<section class="checkup-section" id="checkup">
+
+    <div class="container">
+
+        <h2 class="section-title">🩺 Health Checkup Form</h2>
+
+        <form method="POST" class="checkup-form">
+
+            {% csrf_token %}
+
+            <div class="form-grid">
+
+                <input type="number" name="age" placeholder="Enter Age" required>
+
+                <select name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+                <input type="number" name="weight" placeholder="Weight (kg)" required>
+
+                <input type="number" name="height" placeholder="Height (cm)" required>
+
+                <input type="number" name="bp" placeholder="Blood Pressure" required>
+
+                <input type="number" name="glucose" placeholder="Glucose Level" required>
+
+            </div>
+
+            <textarea name="symptoms" placeholder="Describe your symptoms..." rows="4"></textarea>
+
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-search"></i>
+                Predict Disease
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- RESULT SECTION -->
+<!-- ========================================= -->
+
+{% if prediction %}
+
+<section class="result-section">
+
+    <div class="container">
+
+        <h2>🧾 Prediction Result</h2>
+
+        <div class="result-box">
+
+            <h3>Possible Condition:</h3>
+
+            <p class="result-text">{{ prediction }}</p>
+
+            <p class="result-note">
+                ⚠️ This is an AI prediction. Please consult a doctor for confirmation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+{% endblock %}

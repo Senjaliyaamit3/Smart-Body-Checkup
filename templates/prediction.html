@@ -1,0 +1,1160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}AI Body Checkup{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero prediction-hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <h1>
+
+                <i class="fas fa-heartbeat"></i>
+
+                AI Powered Smart Body Checkup
+
+            </h1>
+
+            <p>
+
+                Predict Diabetes, Heart Disease and Kidney Disease using
+                Machine Learning models. Enter your medical information,
+                receive instant AI predictions, and maintain a healthier life.
+
+            </p>
+
+            <a href="#prediction-section" class="btn">
+
+                Start Health Check
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DISEASE SELECTION ================= -->
+
+<section id="prediction-section" class="disease-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Select Disease Prediction</h2>
+
+            <p>
+
+                Choose the disease you want to predict.
+
+            </p>
+
+        </div>
+
+        <div class="disease-grid">
+
+            <!-- Diabetes Card -->
+
+            <div class="disease-card">
+
+                <i class="fas fa-tint"></i>
+
+                <h3>Diabetes Prediction</h3>
+
+                <p>
+
+                    Predict diabetes using AI.
+
+                </p>
+
+                <button
+                    id="diabetesBtn"
+                    class="btn">
+
+                    Start Diabetes Check
+
+                </button>
+
+            </div>
+
+            <!-- Heart Card -->
+
+            <div class="disease-card">
+
+                <i class="fas fa-heart"></i>
+
+                <h3>Heart Disease Prediction</h3>
+
+                <p>
+
+                    Predict heart disease using AI.
+
+                </p>
+
+                <button
+                    id="heartBtn"
+                    class="btn">
+
+                    Start Heart Check
+
+                </button>
+
+            </div>
+
+            <!-- Kidney Card -->
+
+            <div class="disease-card">
+
+                <i class="fas fa-kidneys"></i>
+
+                <h3>Kidney Disease Prediction</h3>
+
+                <p>
+
+                    Predict kidney disease using AI.
+
+                </p>
+
+                <button
+                    id="kidneyBtn"
+                    class="btn">
+
+                    Start Kidney Check
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DIABETES FORM ================= -->
+
+<section class="form-section">
+
+<div class="container">
+
+<div id="diabetesForm">
+
+<div class="form-card">
+
+<h2>
+
+<i class="fas fa-stethoscope"></i>
+
+Diabetes Prediction Form
+
+</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="hidden"
+name="disease"
+value="diabetes">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Pregnancies</label>
+
+<input
+type="number"
+name="Pregnancies"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Glucose</label>
+
+<input
+type="number"
+name="Glucose"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Blood Pressure</label>
+
+<input
+type="number"
+name="BloodPressure"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Skin Thickness</label>
+
+<input
+type="number"
+name="SkinThickness"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Insulin</label>
+
+<input
+type="number"
+name="Insulin"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>BMI</label>
+
+<input
+type="number"
+step="0.1"
+name="BMI"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Diabetes Pedigree Function</label>
+
+<input
+type="number"
+step="0.001"
+name="DiabetesPedigreeFunction"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Age</label>
+
+<input
+type="number"
+name="Age"
+required>
+
+</div>
+
+</div>
+
+<div class="text-center mt-4">
+
+<button
+type="submit"
+class="btn btn-primary">
+
+<i class="fas fa-robot"></i>
+
+Predict Diabetes
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- ================= HEART FORM ================= -->
+
+<div id="heartForm" style="display:none;">
+
+<div class="form-card">
+
+<h2>
+
+<i class="fas fa-heartbeat"></i>
+
+Heart Disease Prediction
+
+</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="hidden"
+name="disease"
+value="heart">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Age</label>
+
+<input
+type="number"
+name="age"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Sex</label>
+
+<select name="sex">
+
+<option value="1">Male</option>
+
+<option value="0">Female</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Chest Pain Type</label>
+
+<input
+type="number"
+name="cp"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Resting Blood Pressure</label>
+
+<input
+type="number"
+name="trestbps"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Cholesterol</label>
+
+<input
+type="number"
+name="chol"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Fasting Blood Sugar</label>
+
+<select name="fbs">
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Resting ECG</label>
+
+<input
+type="number"
+name="restecg"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Maximum Heart Rate</label>
+
+<input
+type="number"
+name="thalach"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Exercise Induced Angina</label>
+
+<select name="exang">
+
+<option value="1">Yes</option>
+
+<option value="0">No</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Old Peak</label>
+
+<input
+type="number"
+step="0.1"
+name="oldpeak"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Slope</label>
+
+<input
+type="number"
+name="slope"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Number of Major Vessels (CA)</label>
+
+<input
+type="number"
+name="ca"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Thal</label>
+
+<input
+type="number"
+name="thal"
+required>
+
+</div>
+
+</div>
+
+<div class="text-center mt-4">
+
+<button
+type="submit"
+class="btn btn-danger">
+
+<i class="fas fa-heartbeat"></i>
+
+Predict Heart Disease
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- ================= KIDNEY FORM ================= -->
+
+<div id="kidneyForm" style="display:none;">
+
+<div class="form-card">
+
+<h2>
+
+<i class="fas fa-kidneys"></i>
+
+Kidney Disease Prediction
+
+</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="hidden"
+name="disease"
+value="kidney">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Age</label>
+
+<input
+type="number"
+name="age"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Blood Pressure</label>
+
+<input
+type="number"
+name="bp"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Specific Gravity</label>
+
+<input
+type="number"
+step="0.001"
+name="sg"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Albumin</label>
+
+<input
+type="number"
+name="al"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Sugar</label>
+
+<input
+type="number"
+name="su"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Red Blood Cells (0=normal, 1=abnormal)</label>
+
+<input
+type="number"
+name="rbc"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Pus Cell (0=normal, 1=abnormal)</label>
+
+<input
+type="number"
+name="pc"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Pus Cell Clumps (0=notpresent, 1=present)</label>
+
+<input
+type="number"
+name="pcc"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Bacteria (0=notpresent, 1=present)</label>
+
+<input
+type="number"
+name="ba"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Blood Glucose Random</label>
+
+<input
+type="number"
+name="bgr"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Blood Urea</label>
+
+<input
+type="number"
+name="bu"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Serum Creatinine</label>
+
+<input
+type="number"
+step="0.1"
+name="sc"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Sodium</label>
+
+<input
+type="number"
+name="sod"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Potassium</label>
+
+<input
+type="number"
+step="0.1"
+name="pot"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Hemoglobin</label>
+
+<input
+type="number"
+step="0.1"
+name="hemo"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Packed Cell Volume</label>
+
+<input
+type="number"
+name="pcv"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>White Blood Cell Count</label>
+
+<input
+type="number"
+name="wc"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Red Blood Cell Count</label>
+
+<input
+type="number"
+step="0.1"
+name="rc"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Hypertension (0=no, 1=yes)</label>
+
+<input
+type="number"
+name="htn"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Diabetes Mellitus (0=no, 1=yes)</label>
+
+<input
+type="number"
+name="dm"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Coronary Artery Disease (0=no, 1=yes)</label>
+
+<input
+type="number"
+name="cad"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Appetite (0=good, 1=poor)</label>
+
+<input
+type="number"
+name="appet"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Pedal Edema (0=no, 1=yes)</label>
+
+<input
+type="number"
+name="pe"
+min="0" max="1"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Anemia (0=no, 1=yes)</label>
+
+<input
+type="number"
+name="ane"
+min="0" max="1"
+required>
+
+</div>
+
+</div>
+
+<div class="text-center mt-4">
+
+<button
+type="submit"
+class="btn btn-success">
+
+<i class="fas fa-kidneys"></i>
+
+Predict Kidney Disease
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= AI RESULT SECTION ================= -->
+
+{% if result %}
+
+<section class="result-section">
+
+<div class="container">
+
+<div class="result-card">
+
+<div class="result-header">
+
+<h2>
+
+<i class="fas fa-robot"></i>
+
+AI Prediction Result
+
+</h2>
+
+</div>
+
+<div class="result-body">
+
+<h1 class="prediction-text">
+
+{{ result }}
+
+</h1>
+
+<p>
+
+<strong>Confidence:</strong>
+
+{{ probability }}%
+
+</p>
+
+{% if result == "Negative" %}
+
+<div class="risk-level low-risk">
+
+<i class="fas fa-check-circle"></i>
+
+<h3>Risk Level : LOW</h3>
+
+<p>
+
+No significant risk detected.
+Maintain a healthy lifestyle,
+exercise regularly, and follow
+a balanced diet.
+
+</p>
+
+</div>
+
+{% else %}
+
+<div class="risk-level high-risk">
+
+<i class="fas fa-exclamation-triangle"></i>
+
+<h3>Risk Level : HIGH</h3>
+
+<p>
+
+The AI model indicates a higher
+risk. Please consult a qualified
+doctor for further medical
+evaluation.
+
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endif %}
+
+<!-- ================= HEALTH RECOMMENDATIONS ================= -->
+
+<section class="recommendation-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Health Recommendations
+
+</h2>
+
+<p>
+
+Follow these tips to maintain a healthy lifestyle.
+
+</p>
+
+</div>
+
+<div class="recommendation-grid">
+
+<div class="recommendation-card">
+
+<i class="fas fa-apple-alt"></i>
+
+<h3>Healthy Diet</h3>
+
+<p>
+
+Eat more vegetables,
+fruits,
+whole grains,
+and reduce sugar intake.
+
+</p>
+
+</div>
+
+<div class="recommendation-card">
+
+<i class="fas fa-running"></i>
+
+<h3>Exercise</h3>
+
+<p>
+
+Exercise for at least
+30 minutes daily.
+
+</p>
+
+</div>
+
+<div class="recommendation-card">
+
+<i class="fas fa-bed"></i>
+
+<h3>Proper Sleep</h3>
+
+<p>
+
+Sleep 7–8 hours every night
+to improve overall health.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= PREDICTION HISTORY ================= -->
+
+{% if history %}
+
+<section class="history-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+
+                Prediction History
+
+            </h2>
+
+            <p>
+
+                Your previous AI health predictions.
+
+            </p>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="history-table">
+
+                <thead>
+                    <tr>
+                        <th>Disease</th>
+                        <th>Prediction</th>
+                        <th>Confidence</th>
+                        <th>Date</th>
+                        <th>Report</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in history %}
+                        <tr>
+                            <td>{{ item.disease }}</td>
+                            <td>{{ item.result }}</td>
+                            <td>{{ item.probability }}%</td>
+                            <td>{{ item.created_at|date:"d M Y H:i" }}</td>
+                            <td>
+                                <a href="/prediction/report/{{ item.pk }}/" class="btn" style="padding:6px 14px;font-size:13px;">
+                                    <i class="fas fa-download"></i> PDF
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+<!-- ================= QUICK STATISTICS ================= -->
+
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+
+                Smart Health Features
+
+            </h2>
+
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <i class="fas fa-brain"></i>
+
+                <h3>AI Powered</h3>
+
+                <p>
+
+                    Machine Learning prediction system.
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fas fa-clock"></i>
+
+                <h3>Instant Results</h3>
+
+                <p>
+
+                    Get prediction within seconds.
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fas fa-user-shield"></i>
+
+                <h3>Secure Data</h3>
+
+                <p>
+
+                    User prediction history is securely stored.
+
+                </p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fas fa-file-medical"></i>
+
+                <h3>Medical Reports</h3>
+
+                <p>
+
+                    Download AI-generated health reports.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= EMERGENCY CONTACT ================= -->
+
+<section class="emergency-section">
+
+    <div class="container">
+
+        <div class="emergency-card">
+
+            <i class="fas fa-ambulance"></i>
+
+            <h2>
+
+                Medical Emergency
+
+            </h2>
+
+            <p>
+
+                This AI prediction tool is designed to assist you in
+                assessing health risks. It is not a replacement for
+                professional medical advice.
+
+            </p>
+
+            <a href="tel:108" class="btn">
+
+                <i class="fas fa-phone"></i>
+
+                Call Emergency (108)
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
