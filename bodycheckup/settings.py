@@ -137,4 +137,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = "amitsenjaliya043@gmail.com"
-EMAIL_HOST_PASSWORD = "hevq qbam nmcj uxln"
+EMAIL_HOST_PASSWORD = "Your App Password"
