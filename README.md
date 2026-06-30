@@ -75,13 +75,6 @@ The `.pkl` models in `ml_models/` were generated from the CSVs in `datasets/`. T
 python train_models.py
 ```
 
-## Deployment
-
-Deployed on [Render](https://render.com) using:
-- `build.sh` for build/migrate steps
-- `gunicorn` as the WSGI server
-- `whitenoise` for static file serving
-
 ## License
 
 This project is for educational purposes.
